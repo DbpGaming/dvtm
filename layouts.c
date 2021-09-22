@@ -52,11 +52,11 @@ static void xstack(int stack)
 			else {
 				if (i == m) {
 					nx = wax;
-					if(stack == 3) {
+					if (stack == 1 | stack == 3)
 						ny = way;
+					if(stack == 3)
 						nh = (way + wah) - ny - mh;
-					} else if (stack == 1){
-						ny = way;
+					else if (stack == 1) {
 						nx += mw;
 						mvvline(ny, nx, ACS_VLINE, wah);
 						mvaddch(ny, nx, ACS_TTEE);
@@ -115,25 +115,10 @@ static void xstack(int stack)
 		}
 }
 
-static void bstack(void)
-{
-	xstack(0);
-}
-
-static void tstack(void)
-{
-	xstack(3);
-}
-
-static void vstack(void)
-{
-	xstack(2);
-}
-
-static void tile(void)
-{
-	xstack(1);
-}
+static void tstack(void) { xstack(3); }
+static void vstack(void) { xstack(2); }
+static void tile(void)   { xstack(1); }
+static void bstack(void) { xstack(0); }
 
 static void fullscreen(void)
 {
